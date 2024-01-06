@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 import { login } from "@/actions/login";
+import Link from "next/link";
 
 const LoginForm = () => {
   const searchParams = useSearchParams();
@@ -100,7 +101,7 @@ const LoginForm = () => {
                   type="password"
                 />
               </FormControl>
-              {/* <Button
+              <Button
                 size="sm"
                 variant="link"
                 asChild
@@ -109,7 +110,7 @@ const LoginForm = () => {
                 <Link href="/auth/reset">
                   Forgot password?
                 </Link>
-              </Button> */}
+              </Button>
               <FormMessage />
             </FormItem>
           )}

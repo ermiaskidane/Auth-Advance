@@ -38,7 +38,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
       password: hashedPassword
     }
   })
-
+ 
   // TODO: send verification token email
   const verificationToken = await generateVerificationToken(email);
   await sendVerificationEmail(

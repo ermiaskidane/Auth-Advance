@@ -21,10 +21,11 @@ export const {
   //  events do update the emailverification for Oauth accounts(https://authjs.dev/guides/basics/events#linkaccount)
   events: {
     async linkAccount({ user }) {
-      await db.user.update({
+      const Oauthverif = await db.user.update({
         where: { id: user.id },
         data: { emailVerified: new Date() }
       })
+      console.log("EDSFADSFAs", Oauthverif)
     }
   },
   callbacks: {
@@ -46,21 +47,21 @@ export const {
       //   await db.twoFactorConfirmation.delete({
       //     where: { id: twoFactorConfirmation.id }
       //   });
-      // }
+      // }  
 
       return true;
     },
     async session({ token, session }) {
-      // console.log("session", {session})
-      // console.log("token", {token})
+      console.log("session", {session})
+      console.log("token", {token})
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
-
+   
       if (token.role && session.user) {
         session.user.role = token.role as UserRole;
       }
-
+      console.log("session2", {session})
       return session;
     },
     async jwt({ token }) {
