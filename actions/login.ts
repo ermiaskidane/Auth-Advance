@@ -77,7 +77,8 @@ export const login = async(values: z.infer<typeof LoginSchema>) => {
       where: { id: existingConfirmation.id }
     });
   }
-
+// note after twoFactorConfirmation here it will go to auth.ts and delete it there
+// under the callback signIn method
   await db.twoFactorConfirmation.create({
     data: {
       userId: existingUser.id,
